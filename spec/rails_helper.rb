@@ -76,7 +76,7 @@ RSpec.configure do |config|
     end
   end
 
-  config.include Devise::Test::ControllerHelpers, type: :controller  
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
 
 # For shoulda matchers

@@ -6,9 +6,13 @@ ruby "3.1.2"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
 gem "bootsnap", require: false
+gem "devise"
+gem "devise-jwt"
+gem "image_processing", "~> 1.2"
 gem "jbuilder"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
+gem "pundit"
 
 # Use Active Model has_secure_password
 # [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
@@ -28,6 +32,7 @@ end
 
 group :development do
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem "overcommit"
 end
 
 group :test do
