@@ -6,7 +6,6 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(current_user, _opts = {})
-    # debugger
     if current_user.persisted?
       render json: {
         status: 200,

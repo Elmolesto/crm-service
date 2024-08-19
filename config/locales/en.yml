@@ -6,3 +6,7 @@ en:
     updated: "User updated successfully."
     destroyed: "User deleted successfully."
     admin_changed: "Admin status changed successfully."
+  customers_controller:
+    created: "Customer created successfully."
+    updated: "Customer updated successfully."
+    destroyed: "Customer deleted successfully."

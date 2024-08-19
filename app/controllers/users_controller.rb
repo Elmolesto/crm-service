@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     authorize User
-    @users = UserPolicy::Scope.new(current_user, User).resolve
+    @users = User.all
     render json: @users
   end
 
