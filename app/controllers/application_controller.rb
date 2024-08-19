@@ -10,8 +10,8 @@ class ApplicationController < ActionController::API
 
   def user_not_authorized
     render json: {
-      status: 401,
+      status: 403,
       message: I18n.t("pundit.not_authorized"),
-    }, status: :unauthorized
+    }, status: :forbidden
   end
 end

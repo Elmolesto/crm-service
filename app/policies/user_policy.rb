@@ -21,7 +21,7 @@ class UserPolicy < ApplicationPolicy
     user.admin? && user != record
   end
 
-  def change_admin_status?
+  def admin_status?
     user.admin?
   end
 end

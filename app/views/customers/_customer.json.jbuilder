@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.extract! customer, :id, :name, :surname
 json.photo_url customer.photo.attached? ? url_for(customer.photo) : json.null
 json.created_by customer.created_by, :id, :email

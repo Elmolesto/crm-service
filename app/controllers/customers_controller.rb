@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/customers_controller.rb
 class CustomersController < ApplicationController
   before_action :set_customer, only: %i[show update destroy]
