@@ -1,12 +1,9 @@
-name: CI
+name: Test
 
-on:
-  pull_request:
-  push:
-    branches: [ main ]
+on: workflow_call
 
 jobs:
-  test:
+  rspec:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test

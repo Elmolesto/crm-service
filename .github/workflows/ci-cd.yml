@@ -1,0 +1,18 @@
+name: CI/CD
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+  
+  release:
+    uses: ./.github/workflows/release.yml
+    needs: test
+    secrets: inherit
+
+

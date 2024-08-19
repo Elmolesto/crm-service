@@ -35,3 +35,6 @@
 /config/credentials/development.key
 
 /config/credentials/test.key
+
+/config/credentials/production.key
+coverage
