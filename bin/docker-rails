@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+export RAILS_MASTER_KEY=$(cat ./config/credentials/development.key)
+docker-compose \
+  -f docker-compose.yml \
+  run --rm api bin/rails "$@"

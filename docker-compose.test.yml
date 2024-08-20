@@ -1,0 +1,6 @@
+services:
+  api:
+    environment:
+      RAILS_ENV: test
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
+      DATABASE_URL: postgres://postgres:postgres@db:5432/crm_service_test

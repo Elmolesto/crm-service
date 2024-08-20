@@ -5,14 +5,18 @@ Assumptions:
 
 
 ## System Dependencies
-
 To run this project, you need to have the following dependencies installed:
 
 - **Ruby 3.1.2**: Ensure you have the correct Ruby version installed. You can use a version manager like `rbenv` or `rvm` to manage Ruby versions.
 - **Bundler**: Install it by running `gem install bundler`.
 - **PostgreSQL**: The API uses PostgreSQL as the database.
+- **Docker and Docker Compose**: If you prefer to use Docker to run the project.
+- **Amazon S3**: The project uses Amazon S3 for file storage in production.
 
-## Configuration
+Or you can use the Docker setup to run the project, which will install all the dependencies for you.
+You'll need to have Docker and Docker Compose installed on your machine.
+
+## Setup instructions
 
 ### 1. Clone the repository:
 ```bash
@@ -36,7 +40,7 @@ The `example.yml` file in the `config/credentials` directory shows the structure
 rails db:create db:migrate db:seed
 ```
 
-## Running the test suite
+### 4. Running the test suite
 ```bash
 bundle exec rspec
 ```
@@ -46,11 +50,43 @@ Check the coverage by opening the report in your browser.
 - Linux terminal: `xdg-open coverage/index.html`
 
 
-## Running the application
+### 5. Running the application
 ```bash
 bundle exec rails s
 ```
 Use the Postman collection to test the API endpoints.
+
+## Docker setup
+If you prefer to use Docker, there are three bin scripts that will help you run the project:
+
+### 1. Build and run the project:
+```bash
+./bin/docker-setup
+```
+
+```bash
+./bin/docker-dev
+```
+
+### 2. Run the tests:
+```bash
+./bin/docker-test
+```
+
+You can also run an individual test file by passing the file path as an argument, for example:
+```bash
+./bin/docker-test spec/models/customer_spec.rb
+```
+
+### 3. Run rails commands:
+```bash
+./bin/docker-rails <command>
+```
+
+For example, to create a new migration:
+```bash
+./bin/docker-rails g migration AddEmailToCustomers email:string
+```
 
 ## API documentation
 
@@ -60,15 +96,29 @@ See the postman collection [here](https://api.postman.com/collections/412117-b55
 
 
 ## Deployment instructions
-It is configured to automatically deploy to Heroku once the tests have passed on main branch. You will need to set the following secrets in your github repository:
+
+### Dependent services
+- **GitHub Actions**: The project uses GitHub Actions for deployment.
+- **Heroku**: The project is configured to deploy to Heroku automatically once the tests have passed on the main branch.
+- **Amazon S3**: The project uses Amazon S3 for file storage in production.
+
+
+### Heroku deployment
+#### 1. Create an S3 bucket and edit the `config/credentials/production.yml` file with the S3 credentials.
+
+#### 2. Set the following environment variable in your Heroku app:
+- `RAILS_MASTER_KEY`: The contents of the `config/credentials/production.key` file.
+
+If you don't have this file, you can create it by running `EDITOR=vim rails credentials:edit --environment production`. You'll need to add the secrets as they are in the `config/credentials/example.yml` file.
+
+#### 3. Set the following secrets in your github repository:
 - `HEROKU_API_KEY`: The API key for your Heroku account.
 - `HEROKU_APP_NAME`: The name of the Heroku app you want to deploy to.
 - `HEROKU_EMAIL`: The email address associated with your Heroku account.
 
-In heroku, you will need to set the following environment variables:
-- `RAILS_MASTER_KEY`: The contents of the `config/credentials/production.key` file. If you don't have this file, you can create it by running `EDITOR=vim rails credentials:edit --environment production`. You'll need to add the secrets as they are in the `config/credentials/example.yml` file.
-
-On the first deployment, you can run the following command to add some seed data, from heroku dashboard or the heroku CLI:
+#### 4. If you want to add some seed data:
+From heroku dashboard or the heroku CLI:
 ```bash
 heroku run rails db:seed
 ```
+
