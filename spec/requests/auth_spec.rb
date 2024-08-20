@@ -7,7 +7,7 @@ RSpec.describe "Customer endpoints", type: :request do
   let!(:user) { create(:user) }
 
   it "Sign in and gets Bearer token" do
-    post "/users/sign_in", params: {
+    post "/v1/users/sign_in", params: {
       user: {
         email: user.email,
         password: user.password,
@@ -22,12 +22,12 @@ RSpec.describe "Customer endpoints", type: :request do
   it "Sign out" do
     headers = auth_headers(user)
     expect do
-      delete("/users/sign_out", headers:)
+      delete("/v1/users/sign_out", headers:)
     end.to change(JwtDenylist, :count).by(1)
     expect(response).to have_http_status(:success)
 
     # Try to get customers with same token
-    get("/customers", headers:)
+    get("/v1/customers", headers:)
     expect(response).to have_http_status(:unauthorized)
   end
 end
