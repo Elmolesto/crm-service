@@ -16,7 +16,7 @@ To run this project, you need to have the following dependencies installed:
 
 ### 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/crm-service-api.git
+git clone https://github.com/elmolesto/crm-service-api.git
 cd crm-service-api
 bundle install
 ```
@@ -67,3 +67,8 @@ It is configured to automatically deploy to Heroku once the tests have passed on
 
 In heroku, you will need to set the following environment variables:
 - `RAILS_MASTER_KEY`: The contents of the `config/credentials/production.key` file. If you don't have this file, you can create it by running `EDITOR=vim rails credentials:edit --environment production`. You'll need to add the secrets as they are in the `config/credentials/example.yml` file.
+
+On the first deployment, you can run the following command to add some seed data, from heroku dashboard or the heroku CLI:
+```bash
+heroku run rails db:seed
+```
