@@ -56,6 +56,7 @@ RSpec.describe "Customer endpoints", type: :request do
     expect(json_customer["surname"]).to eq(new_attributes[:surname])
     expect(json_customer["created_by"]["id"]).to eq(customer.created_by.id)
     expect(json_customer["last_updated_by"]["id"]).to eq(admin.id)
+    expect(json_customer["photo_url"]).to match(/http/)
     expect(json_customer["photo_url"]).to match(/avatar2.jpg/)
   end
 

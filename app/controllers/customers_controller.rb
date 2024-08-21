@@ -2,6 +2,7 @@
 
 # app/controllers/customers_controller.rb
 class CustomersController < ApplicationController
+  include ActiveStorage::SetCurrent
   before_action :set_customer, only: %i[show update destroy]
 
   def index

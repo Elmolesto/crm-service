@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   end
 
   root to: "application#info"
-  get "*path" => redirect("/")
+  get "v1", to: "application#info"
 end
