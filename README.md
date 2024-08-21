@@ -100,7 +100,7 @@ For example, to create a new migration:
 
 ## III - API documentation
 
-See the postman collection [here](https://api.postman.com/collections/412117-b55f8a7e-7325-49b0-8fc3-1a8f48925ae2?access_key=PMAT-01J5NTX560CVA1X0CCF949FMB5) or import it using the link below:
+See the postman collection [here](https://www.postman.com/universal-capsule-473874/workspace/crm-service/collection/412117-b55f8a7e-7325-49b0-8fc3-1a8f48925ae2?action=share&creator=412117) or import it using the link below:
 
 [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/412117-b55f8a7e-7325-49b0-8fc3-1a8f48925ae2?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D412117-b55f8a7e-7325-49b0-8fc3-1a8f48925ae2%26entityType%3Dcollection%26workspaceId%3Dd5483b05-db6a-4820-bd11-a8b4e172f989)
 
